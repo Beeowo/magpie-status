@@ -76,16 +76,24 @@ Magpie 執行時，使用者能隨時看到並操作一個與「點擊 Magpie tr
 
 ## Acceptance Criteria
 
-- [ ] AC1：點 tray icon 可切換浮窗；浮窗失焦後仍保持顯示（除非使用者手動隱藏）。
-- [ ] AC2：拖曳邊緣可縮放；重啟後大小與位置還原；低於最小尺寸時被限制。
-- [ ] AC3：畫面中的用量／quota／providers 數值與 Magpie 原生面板一致（容許刷新延遲）。
-- [ ] AC4：Magpie 未啟動或 API 失敗時，顯示離線／錯誤狀態且不崩潰。
-- [ ] AC5：只透過 loopback 存取 Magpie；不輸出敏感資料。
-- [ ] AC6：視覺與 Magpie 原生面板並排比對時，主要版面與配色一致（人工驗收）。
-- [ ] AC7：「形象」tab 可為每個狀態指定圖片（webp／png／gif）；狀態切換時立即換圖；未指定時有預設佔位圖；圖片以 contain 完整顯示。
-- [ ] AC8：收到 route-events 的 `attempt_started`／`first_content`／`fallback`／`failed` 時，「形象」tab 能反映對應狀態；無請求時回到待機。
-- [ ] AC9：可為不同 agent 設定不同圖片套；某 agent 缺圖時自動退回使用者指定的預設套。
-- [ ] AC10：多個 agent 同時活躍時，顯示使用者自訂優先序最高的 agent 狀態；全部待機時顯示最後活躍 agent。
+- [x] AC1：點 tray icon 可切換浮窗；浮窗失焦後仍保持顯示（除非使用者手動隱藏）。
+- [x] AC2：拖曳邊緣可縮放；重啟後大小與位置還原；低於最小尺寸時被限制。
+- [x] AC3：畫面中的用量／quota／providers 數值與 Magpie 原生面板一致（容許刷新延遲）。
+- [x] AC4：Magpie 未啟動或 API 失敗時，顯示離線／錯誤狀態且不崩潰。
+- [x] AC5：只透過 loopback 存取 Magpie；不輸出敏感資料。
+- [x] AC6：視覺與 Magpie 原生面板並排比對時，主要版面與配色一致（人工驗收）。
+- [x] AC7：「形象」tab 可為每個狀態指定圖片（webp／png／gif）；狀態切換時立即換圖；未指定時有預設佔位圖；圖片以 contain 完整顯示。
+- [x] AC8：收到 route-events 的 `attempt_started`／`first_content`／`fallback`／`failed` 時，「形象」tab 能反映對應狀態；無請求時回到待機。
+- [x] AC9：可為不同 agent 設定不同圖片套；某 agent 缺圖時自動退回使用者指定的預設套。
+- [x] AC10：多個 agent 同時活躍時，顯示使用者自訂優先序最高的 agent 狀態；全部待機時顯示最後活躍 agent。
+
+## Verification (2026-11-07)
+
+- 自動化：`go test ./...` 27 passed / 6 packages（settings、magpie client、agents、avatar、panel、view）；`go vet ./...`；`bun run typecheck`；`go tool mygo build` 產出 `Magpie Panel.exe` 與 NSIS setup。
+- 實機（built exe，Magpie 127.0.0.1:3425）：用量顯示今日 2,304 次／7.3M tokens／$8.33、7 日 5,737 次／$32.63；Grok 與 ZCode quota 卡；Agents 列出 Claude Code／Codex／OpenCode／Pi／VS Code 等與目前模型、強度；快速頁顯示 Magpie 0.1.3193、port 3425；形象頁有 agent／預設套選單與佔位圖；設定頁有主題、語言、置頂、開機啟動、快捷鍵、port。
+- 開關：全域快捷鍵 Alt+Shift+M 可隱藏並還原浮窗；其他視窗取得焦點時浮窗仍保持顯示。
+- 縮放：拖曳邊角由 440×640 改為 536×748，版面即時重排；正常退出後重啟，`window-state.json` 還原為 536×748 @ (1060,376)。
+- 限制：tray icon 點擊未在此環境自動化，但與快捷鍵共用同一個 show/hide toggle（MyGo `Tray.OnClick`）；AC6 為人工視覺驗收，非逐像素比對。
 
 ## Out of Scope
 
