@@ -1,0 +1,5 @@
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "檢查 API → store → UI → avatar 的資料流與錯誤狀態是否一致"}
+{"file": ".trellis/spec/backend/quality-guidelines.md", "reason": "檢查 Go 模組邊界、錯誤處理、測試覆蓋"}
+{"file": ".trellis/spec/frontend/quality-guidelines.md", "reason": "檢查前端元件、狀態管理與可存取性"}
+{"file": ".trellis/spec/frontend/type-safety.md", "reason": "檢查 typed binding 與 payload 驗證"}
+{"file": ".trellis/tasks/11-07-magpie-floating-panel/research/magpie-api.md", "reason": "逐項核對 Magpie API 契約與離線／錯誤處理"}

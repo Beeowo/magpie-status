@@ -1,0 +1,7 @@
+{"file": ".trellis/tasks/11-07-magpie-floating-panel/research/magpie-api.md", "reason": "Magpie 本機 API、route-events SSE 與內部端點契約，實作 adapter 與形象狀態機的依據"}
+{"file": ".trellis/tasks/11-07-magpie-floating-panel/research/magpie-plugin-runtime.md", "reason": "Magpie 插件能力邊界、頁面宿主生命週期、spawn 與安裝測試方式"}
+{"file": ".trellis/tasks/11-07-magpie-floating-panel/research/mygo-capabilities.md", "reason": "MyGo 視窗、tray、快捷鍵、開機啟動、對話框、custom scheme 與打包能力"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "跨層資料流檢查：Magpie API → adapter → store → 前端／形象狀態"}
+{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "避免重複實作 Magpie 面板元件與狀態映射"}
+{"file": ".trellis/spec/frontend/type-safety.md", "reason": "前端 TypeScript 與 Go binding 的型別安全"}
+{"file": ".trellis/spec/backend/quality-guidelines.md", "reason": "Go 後端品質與錯誤處理基準"}
