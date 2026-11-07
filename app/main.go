@@ -23,8 +23,8 @@ import (
 	"app/internal/settings"
 )
 
-//go:embed resources/icon.png
-var appIcon []byte
+//go:embed resources/tray.png
+var trayIcon []byte
 
 // StateEvent carries every state change to the page.
 var StateEvent = mygo.NewEvent[StateView]("state")
@@ -176,7 +176,7 @@ func (a *App) start() {
 func (a *App) newTray() *mygo.Tray {
 	tray, err := mygo.NewTray(mygo.TrayOptions{
 		ID:      "magpie-panel",
-		Icon:    appIcon,
+		Icon:    trayIcon,
 		ToolTip: "Magpie Panel",
 	})
 	if err != nil {
@@ -303,11 +303,12 @@ func (a *App) errors() (hotkey, autostart string) {
 	return a.hotkeyErr, a.autostartErr
 }
 
-// detectedBinary finds the magpie CLI, caching a miss for 30 seconds.
+// detectedBinary finds the magpie CLI, caching the answer for five minutes
+// (detection may shell out to PowerShell when Magpie lives off PATH).
 func (a *App) detectedBinary() string {
 	a.binMu.Lock()
 	defer a.binMu.Unlock()
-	if time.Since(a.binAt) < 30*time.Second {
+	if time.Since(a.binAt) < 5*time.Minute {
 		return a.binPath
 	}
 	a.binAt = time.Now()
