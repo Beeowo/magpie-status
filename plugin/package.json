@@ -13,6 +13,13 @@
     "page",
     "README.md"
   ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Beeowo/magpie-status.git",
+    "directory": "plugin"
+  },
+  "homepage": "https://github.com/Beeowo/magpie-status#readme",
   "keywords": [
     "magpie",
     "magpie-plugin",
