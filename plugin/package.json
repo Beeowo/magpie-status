@@ -1,0 +1,40 @@
+{
+  "name": "magpie-panel",
+  "version": "0.1.0",
+  "description": "Magpie plugin for Magpie Panel: finds, downloads and launches the floating panel app",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./server": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "page",
+    "README.md"
+  ],
+  "keywords": [
+    "magpie",
+    "magpie-plugin",
+    "panel"
+  ],
+  "magpie": {
+    "page": {
+      "title": "Magpie Panel",
+      "file": "page/index.html",
+      "icon": "page/icon.svg",
+      "titles": {
+        "zh": "懸浮面板",
+        "zh-TW": "懸浮面板",
+        "en": "Magpie Panel"
+      }
+    },
+    "permissions": [
+      "usage:summary"
+    ],
+    "options": {
+      "binaryPath": "",
+      "autoLaunch": true
+    }
+  }
+}
